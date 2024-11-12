@@ -32,6 +32,8 @@ jobs:
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Run PyTest test suite
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
         run: pytest
 
       - name: Zip artifact for deployment
