@@ -1,6 +1,10 @@
 from src.translator import client, translate_content
 from mock import patch
 
+def test_normal_response():
+  response = translate_content("Hier ist dein erstes Beispiel.")
+  assert response == (False, "Here is your first example.")
+
 @patch.object(client.chat.completions, 'create')
 def test_unexpected_language(mocker):
   # we mock the model's response to return a random message

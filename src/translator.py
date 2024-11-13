@@ -44,7 +44,7 @@ def check_valid_output(s, is_language):
   return hasWords
 
 def llm_robust_translation(post: str) -> str:
-  context = "You will be given some text, and you must translate that text into English. The English translation should convey the meaning of the original non-English text as accurately as possible. If the text is already written in English, do not perform any translations. Instead, your response should indicate that the text is already in English and therefore does not need to be translated."
+  context = "You will be given some text, and you must translate that text into English. For example, if you are given the following text: 'ceci est un exemple d'invite', which is written in French, your response should be 'this is an example prompt', written in English."
   response = client.chat.completions.create(
   model="gpt-4o-mini",  # This should match your deployment name in Azure
   messages=[
@@ -61,8 +61,8 @@ def llm_robust_translation(post: str) -> str:
   return response.choices[0].message.content
 
 def llm_robust_get_language(post: str) -> str:
-  context = '''You will be given some text, and you must determine what language that text is written in. If the text is English, then the word 'english' should be in your response. If the text is not English, then the word 'english' should not be in your response, and instead the correct language of that text should be in your response, and your response should be entirely written in English. For example, if you are given the following text: 'ito ay isang halimbawa ng prompt
-' your response should include the word 'Filipino' because that text is Filipino and not English, and your response should be written entirely in English. As another example, if you are given this following text: 'the month is November' your response should include the word 'English' because that text is English.'''
+  context = '''You will be given some text, and you must determine what language that text is written in. If the text is English, then your response should be the word the 'english' only. If the text is not English, then the word 'english' should not be in your response, and instead your response should be name of the correct language of that text, in English. For example, if you are given the following text: 'ito ay isang halimbawa ng prompt
+' your response should be the word 'Filipino' because that text is Filipino and not English, and your response should be written entirely in English. As another example, if you are given this following text: 'the month is November' your response should be the word 'English' because that text is English.'''
   response = client.chat.completions.create(
   model="gpt-4o-mini",  # This should match your deployment name in Azure
   messages=[
