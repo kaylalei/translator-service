@@ -5,6 +5,10 @@ def test_normal_response():
   response = translate_content("Hier ist dein erstes Beispiel.")
   assert response == (False, "Here is your first example.")
 
+def test_english_response():
+  response = translate_content("The content of test topic")
+  assert response == (True, "The content of test topic")
+
 @patch.object(client.chat.completions, 'create')
 def test_unexpected_language(mocker):
   # we mock the model's response to return a random message
