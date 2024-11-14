@@ -151,11 +151,11 @@ def translate_content(post: str) -> tuple[bool, str]:
   translation = llm_robust_translation(post)
   language = llm_robust_get_language(post)
 
-  if not check_valid_output(language, True):
-    language = "Language classification not available."
-    translation = "Translation not available."
-  if not check_valid_output(translation, False):
-    translation = "Translation not available."
+#   if not check_valid_output(language, True):
+#     language = "Language classification not available."
+#     translation = "Translation not available."
+#   if not check_valid_output(translation, False):
+#     translation = "Translation not available."
 
   return ("english" in language.lower(), translation)
 
