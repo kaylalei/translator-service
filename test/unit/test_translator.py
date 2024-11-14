@@ -107,22 +107,18 @@
 
 
 
-def fake_test():
-    pass
-
-def fake_test_2():
-    pass
 
 
 
 
 
-# from src.translator import client, translate_content
+
+from src.translator import client, translate_content
 # from mock import patch
 
-# def test_normal_response():
-#   response = translate_content("Hier ist dein erstes Beispiel.")
-#   assert response == (False, "Here is your first example.")
+def test_normal_response():
+  response = translate_content("Hier ist dein erstes Beispiel.")
+  assert response == (False, "Here is your first example.")
 
 # def test_english_response():
 #   response = translate_content("The content of test topic")
